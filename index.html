@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi tienda</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f5f5f5;
+      color: #111;
+      padding: 20px;
+      margin: 0;
+      text-align: center;
+    }
+
+    /* Encabezado */
+
+    h1 {
+      color: #111;
+      margin-bottom: 8px;
+      font-size: 36px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .slogan {
+      color: #666;
+      font-size: 17px;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+
+    /* Beneficios de la tienda */
+
+    .beneficios {
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      flex-wrap: wrap;
+
+      background-color: #111;
+      color: white;
+
+      padding: 16px;
+      margin-bottom: 35px;
+    }
+
+    .beneficios span {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* Catálogo */
+
+    #productos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .producto {
+      border: none;
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      width: 220px;
+      vertical-align: top;
+
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .producto:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .producto h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+      color: #111;
+    }
+
+    .descripcion {
+      font-size: 14px;
+      color: #666;
+      min-height: 42px;
+    }
+
+    .precio {
+      font-size: 19px;
+      font-weight: bold;
+      color: #111;
+    }
+
+    /* Botones de productos */
+
+    .producto button {
+      background-color: #111;
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      margin-top: 8px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .producto button:hover {
+      background-color: #e30613;
+      transform: scale(1.03);
+    }
+
+    /* Carrito */
+
+    .carrito {
+      margin-top: 40px;
+      padding: 25px;
+      background: white;
+      border-radius: 12px;
+      text-align: left;
+      display: inline-block;
+      min-width: 320px;
+
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .carrito h2 {
+      margin-top: 0;
+      color: #111;
+    }
+
+    #lista-carrito {
+      padding-left: 20px;
+    }
+
+    #lista-carrito li {
+      margin-bottom: 8px;
+    }
+
+    .resumen {
+      border-top: 1px solid #ddd;
+      margin-top: 15px;
+      padding-top: 10px;
+    }
+
+    .total {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Botón vaciar */
+
+    .vaciar {
+      background-color: #e30613;
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      margin-top: 10px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .vaciar:hover {
+      background-color: #b0000d;
+    }
+
+    /* Botón finalizar */
+
+    .finalizar {
+      background-color: #111;
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      margin-top: 10px;
+      margin-left: 5px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .finalizar:hover {
+      background-color: #e30613;
+    }
+
+    /* Efecto general de botones */
+
+    .vaciar:hover,
+    .finalizar:hover {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+  <div class="nike-banner">
+    <div class="nike-content">
+
+      <span class="nike-tag">NIKE</span>
+
+      <h1>Compra tus tenis Nike</h1>
+
+      <p>Corre. Entrena. Muévete. Hazlo a tu manera.</p>
+
+      <a href="#" class="nike-button">COMPRAR AHORA</a>
+
+      <div class="owner">
+        Tienda de <strong>Mariana Nieto Ayala</strong>
+      </div>
+
+    </div>
+  </div>
+
+  <style>
+    .nike-banner {
+      background: #000000;
+      color: #ffffff;
+      padding: 55px 30px;
+      margin-bottom: 30px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .nike-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .nike-tag {
+      display: block;
+      color: #e30613;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 5px;
+      margin-bottom: 12px;
+    }
+
+    .nike-banner h1 {
+      color: #ffffff !important;
+      font-size: 42px !important;
+      font-weight: 800;
+      margin: 0 0 12px 0;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .nike-banner p {
+      color: #dddddd !important;
+      font-size: 18px;
+      margin: 0 0 28px 0;
+    }
+
+    .nike-button {
+      display: inline-block;
+      background-color: #ffffff;
+      color: #111111 !important;
+      padding: 13px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
+
+    .nike-button:hover {
+      background-color: #e30613;
+      color: #ffffff !important;
+      transform: scale(1.05);
+    }
+
+    .owner {
+      margin-top: 25px;
+      color: #999999;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    .owner strong {
+      color: #ffffff;
+    }
+  </style>
+
+  <style>
+    .nike-banner {
+      background: #000000;
+      color: #ffffff;
+      padding: 55px 30px;
+      margin-bottom: 30px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .nike-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .nike-tag {
+      display: block;
+      color: #e30613;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 5px;
+      margin-bottom: 12px;
+    }
+
+    .nike-banner h1 {
+      color: #ffffff !important;
+      font-size: 42px !important;
+      font-weight: 800;
+      margin: 0 0 12px 0;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .nike-banner p {
+      color: #dddddd !important;
+      font-size: 18px;
+      margin: 0 0 28px 0;
+    }
+
+    .nike-button {
+      display: inline-block;
+      background-color: #ffffff;
+      color: #111111 !important;
+      padding: 13px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
+
+    .nike-button:hover {
+      background-color: #e30613;
+      color: #ffffff !important;
+      transform: scale(1.05);
+    }
+  </style>
+
+  <style>
+    .nike-banner {
+      background: linear-gradient(135deg, #000000 0%, #171717 70%, #e5002b 100%);
+      color: #ffffff;
+      padding: 55px 40px;
+      border-radius: 18px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .nike-content {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .nike-tag {
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      color: #e5002b;
+    }
+
+    .nike-banner h1 {
+      font-size: 42px;
+      margin: 12px 0 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .nike-banner p {
+      font-size: 18px;
+      margin-bottom: 28px;
+      color: #eeeeee;
+    }
+
+    .nike-button {
+      display: inline-block;
+      background: #ffffff;
+      color: #000000;
+      padding: 13px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nike-button:hover {
+      background: #e5002b;
+      color: #ffffff;
+      transform: scale(1.05);
+    }
+  </style>
+
+  <p class="slogan">
+    Sabores del mundo a un clic de distancia 🌎
+  </p>
+
+  <div class="beneficios">
+    <span>🚚 Envíos en Bogotá</span>
+    <span>🔒 Compra segura</span>
+    <span>📦 Seguimiento de pedido</span>
+  </div>
+
+  <div id="productos"></div>
+
+  <div class="carrito">
+    <h2>🧾 Carrito de Compras</h2>
+
+    <ul id="lista-carrito"></ul>
+
+    <div class="resumen">
+      <p>
+        Envío: <strong>Gratis</strong>
+      </p>
+
+      <p class="total">
+        Total: $<span id="total">0</span>
+      </p>
+    </div>
+
+    <button class="vaciar" onclick="vaciarCarrito()">
+      🧼 Vaciar Carrito
+    </button>
+
+    <button class="finalizar" onclick="finalizarCompra()">
+      ✅ Finalizar Compra
+    </button>
+  </div>
+
+  <script>
+    const productos = [
+      {
+        id: 1,
+        nombre: "Nike Blazer Low '77 By You",
+        descripcion: "Combinan un estilo clásico y limpio con un diseño personalizable, para crear un look único en blanco o con tus detalles favoritos. ",
+        precio: 300000,
+        imagen: "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_1616,c_limit/5413be7e-44cb-4fe1-bf60-88ba5f72381b/mejor-calzado-deportivo-blanco-de-nike.jpg"
+      },
+      {
+        id: 2,
+        nombre: "Vomero 18",
+        descripcion: "una pisada suave y cómoda, con gran amortiguación para acompañarte en cada carrera. Un diseño moderno pensado para correr con comodidad y confianza.",
+        precio: 1000000,
+        imagen: "https://static.nike.com/a/images/f_auto,cs_srgb/w_960,c_limit/4e4ea44c-71e5-4458-ac3c-4c790423928a/el-mejor-calzado-con-amortiguaci%C3%B3n-de-nike-para-correr-y-caminar.jpg"
+      },
+      {
+        id: 3,
+        nombre: " Nike Air Force 1 Low “Panda” ",
+        descripcion: "Clásicas y versátiles. Combinan blanco y negro para un estilo urbano y atemporal..",
+        precio: 600000,
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-yVk6tVeElYzJJ7KDuX0tVC0_TgdCPgjTehFU2RbKKPQ4mlnSRmSPs6_v&s=10"
+      },
+      {
+        id: 4,
+        nombre: "Nike X2 Limited ",
+        descripcion: "Destacan por su diseño moderno, cómodo y versátil, perfectas para un estilo urbano y deportivo.",
+        precio: 900000,
+        imagen: "https://http2.mlstatic.com/D_NQ_NP_2X_814457-MLV101161921375_122025-T.webp"
+      },
+      {
+        id: 5,
+        nombre: "Air Max Plus Paris Saint-Germain",
+        descripcion: "Combinan el estilo icónico de Air Max con los colores y detalles inspirados en el PSG, para un look deportivo y urbano.",
+        precio: 2200000,
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIW6_nEvSSrMMQtdz_H2TI-03IAr_kQUJmOYkFDdlZONMa66BjlmZnBjhY&s=10"
+      }
+    ];
+
+
+    /* ==============================
+       CARRITO
+    ================================ */
+
+    const carrito = [];
+
+    const contenedorProductos = document.getElementById("productos");
+    const listaCarrito = document.getElementById("lista-carrito");
+    const totalCarrito = document.getElementById("total");
+
+
+    /* ==============================
+       MOSTRAR PRODUCTOS
+    ================================ */
+
+    function mostrarProductos() {
+
+      contenedorProductos.innerHTML = "";
+
+      productos.forEach(prod => {
+
+        const div = document.createElement("div");
+
+        div.className = "producto";
+
+        div.innerHTML = `
+          <img src="${prod.imagen}" alt="${prod.nombre}">
+
+          <h3>${prod.nombre}</h3>
+
+          <p class="descripcion">
+            ${prod.descripcion}
+          </p>
+
+          <p class="precio">
+            ${prod.precio.toLocaleString("es-CO", {
+              style: "currency",
+              currency: "COP",
+              minimumFractionDigits: 0
+            })}
+          </p>
+
+          <button onclick="agregarAlCarrito(${prod.id})">
+            Agregar al carrito
+          </button>
+        `;
+
+        contenedorProductos.appendChild(div);
+
+      });
+
+    }
+
+
+    /* ==============================
+       AGREGAR AL CARRITO
+    ================================ */
+
+    function agregarAlCarrito(id) {
+
+      const productoExistente =
+        carrito.find(p => p.id === id);
+
+      if (productoExistente) {
+
+        productoExistente.cantidad++;
+
+      } else {
+
+        const producto =
+          productos.find(p => p.id === id);
+
+        carrito.push({
+          ...producto,
+          cantidad: 1
+        });
+
+      }
+
+      actualizarCarrito();
+
+    }
+
+
+    /* ==============================
+       ACTUALIZAR CARRITO
+    ================================ */
+
+    function actualizarCarrito() {
+
+      listaCarrito.innerHTML = "";
+
+      let total = 0;
+      let totalItems = 0;
+
+      carrito.forEach(item => {
+
+        const li =
+          document.createElement("li");
+
+        const subtotal =
+          item.precio * item.cantidad;
+
+        li.textContent =
+          `${item.nombre} x${item.cantidad} — ` +
+          subtotal.toLocaleString("es-CO", {
+            style: "currency",
+            currency: "COP",
+            minimumFractionDigits: 0
+          });
+
+        listaCarrito.appendChild(li);
+
+        total += subtotal;
+        totalItems += item.cantidad;
+
+      });
+
+      totalCarrito.textContent =
+        total.toLocaleString("es-CO");
+
+      actualizarTituloCarrito(totalItems);
+
+    }
+
+
+    /* ==============================
+       CONTADOR DEL CARRITO
+    ================================ */
+
+    function actualizarTituloCarrito(cantidad) {
+
+      const titulo =
+        document.querySelector(".carrito h2");
+
+      titulo.textContent =
+        `🧾 Carrito de Compras (${cantidad})`;
+
+    }
+
+
+    /* ==============================
+       VACIAR CARRITO
+    ================================ */
+
+    function vaciarCarrito() {
+
+      if (carrito.length === 0) {
+
+        alert("🛒 El carrito ya está vacío.");
+
+        return;
+
+      }
+
+      if (
+        confirm(
+          "¿Estás seguro de que quieres vaciar el carrito?"
+        )
+      ) {
+
+        carrito.length = 0;
+
+        actualizarCarrito();
+
+      }
+
+    }
+
+
+    /* ==============================
+       FINALIZAR COMPRA
+    ================================ */
+
+    function finalizarCompra() {
+
+      if (carrito.length === 0) {
+
+        alert(
+          "🛒 Tu carrito está vacío. Agrega productos antes de finalizar la compra."
+        );
+
+        return;
+
+      }
+
+      alert(
+        "🎉 ¡Pedido simulado confirmado!\n\n" +
+        "En un eCommerce real, ahora entrarían en acción " +
+        "el backend, la pasarela de pago y la logística."
+      );
+
+      carrito.length = 0;
+
+      actualizarCarrito();
+
+    }
+
+
+    /* ==============================
+       INICIAR TIENDA
+    ================================ */
+
+    mostrarProductos();
+
+  </script>
+</body>
+</html>
